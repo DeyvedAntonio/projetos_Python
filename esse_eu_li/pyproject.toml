@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "esse-eu-li"
+version = "0.1.0"
+description = "Programa desenvolvido para testar os conhecimentos adquiridos."
+authors = ["Deyved Antonio <deyved.antonio@gmail.com>"]
+readme = "README.md"
+packages = [{include = "esse_eu_li"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+blue = "^0.9.1"
+mkdocs = "^1.5.2"
+mypy = "^1.5.0"
+pip-audit = "^2.6.1"
+ruff = "^0.0.284"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
