@@ -1,0 +1,34 @@
+<Login>:
+    orientation: 'vertical'
+    spacing: 15
+    padding: 20
+
+    Image:
+        source: 'Image/logo.png'
+        size: self.texture_size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 15
+        padding: 20
+        Label:
+            text: 'Nome ou E-mail'
+            haling: 'left'
+        TextInput:
+            id: nome
+            multiline: False
+        Label:
+            text: 'Senha'
+        TextInput:
+            id: psw_login
+            multiline: False
+        Button:
+            id: salvar
+            text: 'Salvar'
+            font_size: 30
+            on_release:
+        Button:
+            id: cancelar
+            text: 'Cancelar'
+            font_size: 30
+            on_release:
