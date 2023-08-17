@@ -10,6 +10,10 @@ packages = [{include = "agenda_clientes"}]
 python = "^3.9"
 
 
+[tool.poetry.group.dev.dependencies]
+prospector = "^1.10.2"
+mkdocs = "^1.5.2"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
