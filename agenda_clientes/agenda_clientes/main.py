@@ -1,13 +1,17 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
 
 
 class Main(App):
     def build(self):
-        return Login()
-    
+        return Gerenciador_telas()
 
-class Login(BoxLayout):
+
+class Gerenciador_telas(ScreenManager):
+    pass
+
+
+class Login(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
