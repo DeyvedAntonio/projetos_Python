@@ -8,11 +8,14 @@ packages = [{include = "agenda_clientes"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+sqlalchemy = "^2.0.20"
 
 
 [tool.poetry.group.dev.dependencies]
 prospector = "^1.10.2"
 mkdocs = "^1.5.2"
+pytest = "^7.4.2"
+pip-audit = "^2.6.1"
 
 [build-system]
 requires = ["poetry-core"]
