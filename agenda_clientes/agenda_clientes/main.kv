@@ -1,6 +1,8 @@
 <Gerenciador_telas>:
     Login:
-        id: login
+        name: 'login'
+    Home:
+        name: 'tela_home'    
 
 <Login>:
     spacing: 15
@@ -16,24 +18,62 @@
             orientation: 'vertical'
             spacing: 15
             padding: 20
+            size_hint_y: None
+            height: self.minimum_height 
             Label:
                 text: 'Nome ou E-mail'
-                haling: 'left'
+                text_size: self.size
+                halign: 'left'
+                font_size: 25
+                size_hint_y: None
+                height: 50
+                color: 0, 0, 0, 1
             TextInput:
                 id: nome
                 multiline: False
+                size_hint_y: None
+                height: 35
             Label:
                 text: 'Senha'
+                text_size: self.size
+                halign: 'left'
+                height: 30
+                color: 0, 0, 0, 1
+                font_size: 25
             TextInput:
                 id: psw_login
                 multiline: False
+                size_hint_y: None
+                height: 35
+            Label:
+                text: 'Esqueceu a senha?'
+                text_size: self.size
+                halign: 'right'
+                height: 50
+                color: 0, 0, 0, 1
+                font_size: 20
             Button:
                 id: entrar
                 text: 'Entrar'
-                font_size: 30
-                on_release:
+                font_size: 25
+                on_release: root.verificar_status()
+                size_hint_y: None
+                height: 45
             Button:
                 id: cancelar
                 text: 'Cancelar'
-                font_size: 30
+                font_size: 25
                 on_release:
+                size_hint_y: None
+                height: 45
+
+<Home>:
+    BoxLayout:
+        id: menu
+        orientation: 'vertical'
+    BoxLayout:
+        id: head
+    BoxLayout:
+        id: body
+    BoxLayout:
+        id: baseboard
