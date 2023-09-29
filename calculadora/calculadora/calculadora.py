@@ -1,19 +1,22 @@
-from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.core.window import Window
-
-Window.size = 500, 400
-Window.clearcolor = (233/255, 255/255, 216/255, 1)
+from kivymd.app import MDApp
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.button import MDRectangleFlatButton
 
 
-class Home(BoxLayout):
-    pass
-
-
-class Calculadora(App):
+class MainApp(MDApp):
     def build(self):
-        return Home()
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "Orange"
+        self.title = 'Calculadora'
+
+        return (
+            MDScreen(
+                MDRectangleFlatButton(
+                    text="Hello, World",
+                    pos_hint={"center_x": 0.5, "center_y": 0.5},
+                )
+            )
+        )
 
 
-if __name__ == '__main__':
-    Calculadora().run()
+MainApp().run()
