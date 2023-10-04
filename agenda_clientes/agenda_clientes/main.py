@@ -1,9 +1,6 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
-from sqlalchemy import (create_engine, MetaData, Column,
-                        Table, Integer, String, DateTime)
-
 
 Window.size = 800, 500
 Window.clearcolor = (233/255, 233/255, 233/255, 1)
