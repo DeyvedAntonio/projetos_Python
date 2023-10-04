@@ -8,8 +8,9 @@ Window.clearcolor = (233/255, 255/255, 216/255, 1)
 
 class Home(BoxLayout):
     def digito(self, value):
-        """_summary_
-
+        """
+        Inserção dos dígitos no display de entrada.
+        
         Args:
             value (int): inserir os números no primeiro display da calculadora
         """
@@ -17,6 +18,9 @@ class Home(BoxLayout):
             self.ids.entrada.text += str(value)
 
     def limpar(self):
+        """
+        Limpeza do display de entrada.
+        """
         self.ids.entrada.text = ''
 
 class Calculadora(App):
