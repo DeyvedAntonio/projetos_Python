@@ -7,7 +7,8 @@ Window.clearcolor = (233/255, 255/255, 216/255, 1)
 
 
 class Home(BoxLayout):
-    pass
+    def digito(self, num):
+        self.ids.entrada.text += str(num)
 
 
 class Calculadora(App):
