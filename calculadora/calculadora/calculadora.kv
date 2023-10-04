@@ -3,10 +3,12 @@
     Label:
         id: saida
         size_hint_y: None
+        font_size: 35
         height: 45
         color: 0, 0, 0, 1
     Label:
         id: entrada
+        font_size: 30
         size_hint_y: None
         color: 0, 0, 0, 1
         height: 45
@@ -19,6 +21,7 @@
             text: 'AC'
         Button:
             text: 'C'
+            on_release: root.limpar()
         Button:
             text: '+/-'
         Button:
@@ -63,5 +66,6 @@
             on_release: root.digito(0)
         Button:
             text: '.'
+            on_release: root.digito('.')
         Button:
             text: '='

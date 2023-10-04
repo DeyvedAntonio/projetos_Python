@@ -7,8 +7,14 @@ Window.clearcolor = (233/255, 255/255, 216/255, 1)
 
 
 class Home(BoxLayout):
-    def digito(self, num):
-        self.ids.entrada.text += str(num)
+    def digito(self, value):
+        """_summary_
+
+        Args:
+            value (int): inserir os números no primeiro display da calculadora
+        """
+        if len(self.ids.entrada.text) < 8:
+            self.ids.entrada.text += str(value)
 
 
 class Calculadora(App):
