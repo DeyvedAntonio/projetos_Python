@@ -2,14 +2,19 @@
     orientation: 'vertical'
     Label:
         id: saida
+        size_hint_y: None
+        height: 45
         color: 0, 0, 0, 1
-        text: 'Testando a saída de informação.'
     Label:
+        id: entrada
+        size_hint_y: None
+        color: 0, 0, 0, 1
+        height: 45
 
-    BoxLayout:
-        orientation: 'vertical'
-        spacing: 15
-        padding: 15
+    GridLayout:
+        cols: 4
+        padding: 10, 10, 10, 10
+        spacing: 10, 10
         Button:
             text: 'AC'
         Button:
