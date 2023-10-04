@@ -11,6 +11,7 @@
 [Calculadora](https://github.com/DeyvedAntonio/projetos_Python/tree/main/calculadora)
 
 ## Layout do projeto
+![Primeiro layout](https://github.com/DeyvedAntonio/projetos_Python/blob/main/img/layout_calculadora.png)
 
 ## Competências
 - 
