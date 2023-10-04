@@ -16,6 +16,8 @@ class Home(BoxLayout):
         if len(self.ids.entrada.text) < 8:
             self.ids.entrada.text += str(value)
 
+    def limpar(self):
+        self.ids.entrada.text = ''
 
 class Calculadora(App):
     def build(self):
