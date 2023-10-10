@@ -7,19 +7,8 @@ def conexao():
     Returns:
         str: database Connection object
     """
-    return sqlite3.connect('agenda_clientes.db')
-
-def cursor(con):
-    """
-    Cria um objeto do tipo Cursor.
-
-    Args:
-        con (str): database Connection object
-
-    Returns:
-        Cursor: create a Cursor object
-    """
-    return con.cursor()
+    with sqlite3.connect('agenda_clientes.db') as conexao:
+        return conexao.cursor()
 
 def commit(conexao):
     """
