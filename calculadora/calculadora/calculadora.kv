@@ -2,16 +2,26 @@
     orientation: 'vertical'
     Label:
         id: saida
+        padding: 10, 10, 10, 10
+        spacing: 10, 10
         size_hint_y: None
         font_size: 35
         height: 45
         color: 0, 0, 0, 1
+        text_size: self.size
+        halign: 'left'
+        valign: 'middle'
     Label:
         id: entrada
+        padding: 10, 10, 10, 10
+        spacing: 10, 10
         font_size: 30
         size_hint_y: None
         color: 0, 0, 0, 1
         height: 45
+        text_size: self.size
+        halign: 'right'
+        valign: 'middle'
 
     GridLayout:
         cols: 4
