@@ -23,6 +23,16 @@ class Home(BoxLayout):
         """
         self.ids.entrada.text = ''
 
+    def limpar_tudo(self):
+        """
+        Limpeza das das exibições
+        :return:
+        None
+        """
+        self.ids.saida.text = ''
+        self.limpar()
+
+
 class Calculadora(App):
     def build(self):
         return Home()
