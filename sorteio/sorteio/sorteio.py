@@ -13,7 +13,7 @@ def modifica_motorista(listagem_fechamento, motorista: str, substituto: str):
         if servidor == motorista:
             motorista = 'Sergio'
 
-def sorteio(carro_vagas: dict, restricoes: dict, fechamento: dict, lista_servidores: list, limite: dict):
+def sorteio(carro_vagas: dict, restricoes: dict, fechamento: dict, lista_servidores: list, limite: dict, motorista: str, substituto: str):
     for chave, lista_vagas in carro_vagas.items():
         for vaga in lista_vagas.keys():
             sair = False
@@ -33,10 +33,10 @@ def verifica_restrições(sorteado: str, restricoes: dict, fechamento: dict) -> 
         return False
 
 def informar_motorista() -> str:
-    return str(input('Informe quem será o motorista: '))
+    return str(input('Informe quem será o motorista: ').title())
     
 def informar_substituto() -> str:    
-    return str(input('Informe quem será o motorista substituto: '))
+    return str(input('Informe quem será o motorista substituto: ').title())
 
 
 def verifica_quantidade(nome, quantidade):
@@ -51,7 +51,7 @@ if __name__ == '__main__':
                 'quarta': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
                 'quinta': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
                 'sexta': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'sabado': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'sábado': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
                 'domingo': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, }
 
     with open(r'sorteio\sorteio\arquivos\lista_servidores.csv', 'r') as file:
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     dicionario_restrições(restricoes)
     motorista = informar_motorista()
     substituto = informar_substituto()
-    sorteio(carro_vagas, restricoes, fechamentos, lista_servidores, limite_sorteio)
+    sorteio(carro_vagas, restricoes, fechamentos, lista_servidores, limite_sorteio, motorista, substituto)
 
     print(f'restrições: {restricoes}\n')
     print(f'fechamento: {fechamentos}\n')
