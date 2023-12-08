@@ -1,19 +1,19 @@
 import random
 
-def dicionario_restrições(listagem) -> None:
+def dicionario_restrições(listagem: list) -> None:
     for chave in listagem.keys():
         listagem[chave] = input(f'Digite o nome do servidor que possui restrição na(o) {chave}: ').title().split(', ')
 
-def dicionario_fechamento(listagem) -> None:
+def dicionario_fechamento(listagem: list) -> None:
     for chave in listagem.keys():
         listagem[chave] = input(f'Digite o nome do sevidor que vai fechar na(o) {chave}: ').title()
 
-def modifica_motorista(listagem_fechamento, motoristas):
+def modifica_motorista(listagem_fechamento, motorista: str, substituto: str):
     for dia, servidor in listagem_fechamento.items():
-        if servidor == motoristas[dia]:
-            motoristas[dia] = 'Sergio'
+        if servidor == motorista:
+            motorista = 'Sergio'
 
-def sorteio(carro_vagas, restricoes, fechamento, lista_servidores):
+def sorteio(carro_vagas: dict, restricoes: dict, fechamento: dict, lista_servidores: list, limite: dict):
     for chave, lista_vagas in carro_vagas.items():
         for vaga in lista_vagas.keys():
             sair = False
@@ -32,18 +32,27 @@ def verifica_restrições(sorteado: str, restricoes: dict, fechamento: dict) -> 
     else:
         return False
 
+def informar_motorista() -> str:
+    return str(input('Informe quem será o motorista: '))
+    
+def informar_substituto() -> str:    
+    return str(input('Informe quem será o motorista substituto: '))
+
+
+def verifica_quantidade(nome, quantidade):
+    pass
+
 if __name__ == '__main__':
     lista_servidores = []
-    restricoes = {'segunda': [], 'terça': [], 'quarta': [], 'quinta': [], 'sexta': [], 'sabado': [], 'domingo': [], }
-    fechamentos = {'segunda': '', 'terça': '', 'quarta': '', 'quinta': '', 'sexta': '', 'sabado': '', 'domingo': '', }
-    motoristas = {'segunda': 'Thiago', 'terça': 'Thiago', 'quarta': 'Thiago', 'quinta': 'Thiago', 'sexta': 'Thiago', 'sabado': 'Thiago', 'domingo': 'Thiago', }
-    carro_vagas = {'segunda': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'terça': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'quarta': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'quinta': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'sexta': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'sabado': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
-                'domingo': {'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, }
+    restricoes = {'segunda': [], 'terça': [], 'quarta': [], 'quinta': [], 'sexta': [], 'sábado': [], 'domingo': [], }
+    fechamentos = {'segunda': '', 'terça': '', 'quarta': '', 'quinta': '', 'sexta': '', 'sábado': '', 'domingo': '', }
+    carro_vagas = {'segunda': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'terça': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'quarta': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'quinta': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'sexta': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'sabado': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
+                'domingo': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, }
 
     with open(r'sorteio\sorteio\arquivos\lista_servidores.csv', 'r') as file:
         try:
@@ -53,12 +62,17 @@ if __name__ == '__main__':
         else:
             pass
 
+    total_vaga = 4 * 7
+    limite_sorteio = {(nome, 0) for nome in lista_servidores}
     dicionario_fechamento(fechamentos)
     dicionario_restrições(restricoes)
-    modifica_motorista(fechamentos, motoristas)
-    sorteio(carro_vagas, restricoes, fechamentos, lista_servidores)
+    motorista = informar_motorista()
+    substituto = informar_substituto()
+    sorteio(carro_vagas, restricoes, fechamentos, lista_servidores, limite_sorteio)
 
     print(f'restrições: {restricoes}\n')
     print(f'fechamento: {fechamentos}\n')
-    print(f'motorista: {motoristas}\n')
-    print(f'Vagas: {carro_vagas}')
+    print(f'motorista: {motorista}\n')
+    print(f'motorista substituto: {substituto}\n')
+    print(f'Vagas: {carro_vagas}\n')
+    print(f'QTD sorteio: {limite_sorteio}')
