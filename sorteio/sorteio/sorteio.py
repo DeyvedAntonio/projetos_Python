@@ -8,8 +8,8 @@ def dicionario_fechamento(listagem: list) -> None:
     for chave in listagem.keys():
         listagem[chave] = input(f'Digite o nome do sevidor que vai fechar na(o) {chave}: ').title()
 
-def modifica_motorista(listagem_fechamento, motorista: str, substituto: str):
-    for dia, servidor in listagem_fechamento.items():
+def modifica_motorista(listagem_fechamento: dict, motorista: str, substituto: str):
+    for servidor in listagem_fechamento.values():
         if servidor == motorista:
             motorista = 'Sergio'
 
