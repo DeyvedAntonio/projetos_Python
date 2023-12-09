@@ -18,6 +18,13 @@ def sorteio(carro_vagas: dict, restricoes: dict, fechamento: dict, lista_servido
         for vaga in lista_vagas.keys():
             sair = False
             while sair != True:
+                if vaga == 'MO':
+                    if fechamento[chave] != motorista:
+                        carro_vagas[chave][vaga] = motorista
+                    else:
+                        carro_vagas[chave][vaga] = substituto
+                    sair = True
+                    continue
                 sorteado = random.choice(lista_servidores)
                 verificado = verifica_restrições(sorteado, restricoes, fechamento)
                 if verificado:
@@ -54,7 +61,7 @@ if __name__ == '__main__':
                 'sábado': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, 
                 'domingo': {'MO': '', 'Vaga1': '', 'Vaga2': '', 'Vaga3': '', 'Vaga4': ''}, }
 
-    with open(r'sorteio\sorteio\arquivos\lista_servidores.csv', 'r') as file:
+    with open(r'sorteio\arquivos\lista_servidores.csv', 'r') as file: # D:\Mega\00.Portifolio\projetos_Python\sorteio\sorteio\arquivos\lista_servidores.csv
         try:
             lista_servidores = file.read().split(', ')
         except FileNotFoundError:
