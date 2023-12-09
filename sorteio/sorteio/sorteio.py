@@ -8,7 +8,18 @@ def dicionario_fechamento(listagem: list) -> None:
     for chave in listagem.keys():
         listagem[chave] = input(f'Digite o nome do sevidor que vai fechar na(o) {chave}: ').title()
 
-def modifica_motorista(dia: str, motorista: str, substituto: str):
+def modifica_motorista(dia: str, motorista: str, substituto: str) -> str:
+    """
+    seleciona o motorista de acordo com a restrição do dia que o motorista é o responsável pelo fechamento.
+
+    Args:
+        dia (str): responsável pelo fechamento.
+        motorista (str): motorista principal do carro.
+        substituto (str): motorista substituto.
+
+    Returns:
+        str: retorna quem pode ser o motorista de acordo com os critários.
+    """
     if dia != motorista:
         return motorista
     else:
