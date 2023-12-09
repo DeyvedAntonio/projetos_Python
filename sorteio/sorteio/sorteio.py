@@ -8,10 +8,11 @@ def dicionario_fechamento(listagem: list) -> None:
     for chave in listagem.keys():
         listagem[chave] = input(f'Digite o nome do sevidor que vai fechar na(o) {chave}: ').title()
 
-def modifica_motorista(listagem_fechamento: dict, motorista: str, substituto: str):
-    for servidor in listagem_fechamento.values():
-        if servidor == motorista:
-            motorista = 'Sergio'
+def modifica_motorista(dia: str, motorista: str, substituto: str):
+    if dia != motorista:
+        return motorista
+    else:
+        return substituto
 
 def sorteio(carro_vagas: dict, restricoes: dict, fechamento: dict, lista_servidores: list, limite: dict, motorista: str, substituto: str):
     for chave, lista_vagas in carro_vagas.items():
@@ -19,10 +20,7 @@ def sorteio(carro_vagas: dict, restricoes: dict, fechamento: dict, lista_servido
             sair = False
             while sair != True:
                 if vaga == 'MO':
-                    if fechamento[chave] != motorista:
-                        carro_vagas[chave][vaga] = motorista
-                    else:
-                        carro_vagas[chave][vaga] = substituto
+                    carro_vagas[chave][vaga] = modifica_motorista(fechamento[chave], motorista, substituto)
                     sair = True
                     continue
                 sorteado = random.choice(lista_servidores)
