@@ -8,8 +8,15 @@ class Sorteio:
     def __init__(self) -> None:
         pass
 
-    def sorteio_vagas(self):
-        pass
+    def sorteio_vagas(self, servidores, fechamento):
+        flag = False
+        carro_vagas = {'segunda': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
+                       'terça': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
+                       'quarta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
+                       'quinta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
+                       'sexta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
+                       'sábado': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
+                       'domingo': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', },}
 
     def fechamento(self) -> dict:
         """
@@ -34,4 +41,4 @@ if '__main__' == __name__:
         pass
 
     lista_fechamento = sorteio.fechamento()
-
+    lista_sorteio = sorteio.sorteio_vagas(lista_servidores.copy(), lista_fechamento)
