@@ -1,5 +1,6 @@
-import pandas as pd
 import numpy as np
+import os
+import pandas as pd
 import random
 
 class Sorteio:
@@ -17,6 +18,11 @@ class Sorteio:
                        'sexta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
                        'sábado': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
                        'domingo': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', },}
+        for dia, vagas in carro_vagas.items():
+            for vaga, servidor in vagas.items():
+                escolhido = random.choice(servidores)
+                if escolhido not in vagas and escolhido != fechamento[dia]:
+                    carro_vagas[dia][vaga] = escolhido
 
     def fechamento(self) -> dict:
         """
@@ -33,12 +39,13 @@ class Sorteio:
 if '__main__' == __name__:
     sorteio = Sorteio()
     lista_servidores = []
+    caminho = os.getcwd()
 
     try:
-        with open(r'arquivos\lista_servidores.csv') as file:
+        with open(f'{caminho}\\sorteio\\arquivos\\lista_servidores.csv', 'r') as file:
             lista_servidores = file.read()
     except FileNotFoundError:
         pass
 
     lista_fechamento = sorteio.fechamento()
-    lista_sorteio = sorteio.sorteio_vagas(lista_servidores.copy(), lista_fechamento)
+    lista_sorteio = sorteio.sorteio_vagas(lista_servidores.split(', ').copy(), lista_fechamento)
