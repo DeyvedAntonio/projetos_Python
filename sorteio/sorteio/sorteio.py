@@ -4,25 +4,20 @@ import pandas as pd
 import random
 
 class Sorteio:
-    vaga_carro = 4
 
     def __init__(self) -> None:
-        pass
+        self.vaga_carro = 4
 
-    def sorteio_vagas(self, servidores, fechamento):
-        flag = False
-        carro_vagas = {'segunda': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
-                       'terça': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
-                       'quarta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
-                       'quinta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
-                       'sexta': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
-                       'sábado': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', }, 
-                       'domingo': {'vaga_1': '', 'vaga_2': '', 'vaga_3': '', 'vaga_4': '', },}
-        for dia, vagas in carro_vagas.items():
-            for vaga, servidor in vagas.items():
-                escolhido = random.choice(servidores)
-                if escolhido not in vagas and escolhido != fechamento[dia]:
-                    carro_vagas[dia][vaga] = escolhido
+    def sorteio_vagas(self, funcionarios) -> list:
+        """Faz a seleção de funcionários de acordo com a quantidade da variável da classe.
+
+        Args:
+            funcionarios (list): Conjunto de funcionários que vão participar do sorteio.
+
+        Returns:
+            list: Sorteados de acordo com a quantidade especificada.
+        """
+        return random.sample(funcionarios, k=self.vaga_carro)
 
     def fechamento(self) -> dict:
         """
@@ -48,4 +43,7 @@ if '__main__' == __name__:
         pass
 
     lista_fechamento = sorteio.fechamento()
-    lista_sorteio = sorteio.sorteio_vagas(lista_servidores.split(', ').copy(), lista_fechamento)
+    lista_sorteio = sorteio.sorteio_vagas(lista_servidores.split(', ').copy())
+
+    print(f'fechamento: {lista_fechamento}')
+    print(f'sorteio: {lista_sorteio}')
