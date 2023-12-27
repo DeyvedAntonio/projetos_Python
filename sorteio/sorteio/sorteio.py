@@ -11,7 +11,7 @@ motoristas = {'segunda': '', 'terca': '', 'quarta': '', 'quinta': '', 'sexta': '
 
 try:
     with open(f'{caminho}\\sorteio\\arquivos\\lista_servidores.csv', 'r') as file:
-        lista_servidores = file.read()
+        lista_servidores = file.read().split(', ')
 except FileNotFoundError:
     pass
 
@@ -24,11 +24,23 @@ def definir_motorista():
         motoristas[chave] = input(f'Infome o motorista no(a) {chave} ').strip().title()
 
 def sorteio_nomes(quantidade=vagas_carro):
-    sorteados = random.choices(lista_servidores, k=quantidade)
+    return random.sample(lista_servidores, k=quantidade)
 
-def verificar_fechamento(nomes):
-    pass
+def verificar_fechamento(nome: str):
+    for v in lista_fechamento.values():
+        if nome == v:
+            return True
+        else:
+            return False
 
 definir_fechamento()
 
-sorteio_nomes()
+for key in lista_vagas.keys():
+    sorteados = sorteio_nomes()
+    for nome in sorteados:
+        confirmacao = verificar_fechamento(nome)
+        if confirmacao == True:
+            sorteados.pop(nome)
+    if len(sorteados) < vagas_carro:
+        # TODO: novo sorteio com a quantidade que falta
+        pass
